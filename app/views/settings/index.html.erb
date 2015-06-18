@@ -1,0 +1,76 @@
+<h1>Select Playlists</h1>
+<script
+    language="JavaScript"
+    src="/javascripts/slider.js" >
+</script>
+<link
+    href="/stylesheets/slider.css"
+    rel="stylesheet"
+    type="text/css" />
+
+<p>
+<%= link_to_remote "Skip Song",
+   :url => { :controller => :nextsongs,:action => 'action', :do => :playerSkip}%> |
+   <%= link_to_remote "Start/Stop",
+   :url => { :controller => :nextsongs,:action => 'action', :do => :playerStartStop}%> |
+   <%= link_to_remote "Pause",
+   :url => { :controller => :nextsongs,:action => 'action', :do => :playerPause}%>
+</p>
+<p><%= link_to "Set Active m4p types", :apids %></p>
+
+
+<% form_tag :action => 'update' do%>
+<div class="carpe_horizontal_slider_display_combo">
+	<div class="carpe_horizontal_slider_track" style="background-color: #bcd; border-color: #def #9ab #9ab #def;">
+		<div class="carpe_slider_slit" style="background-color: #003; border-color: #99b #ddf #ddf #99b;">&nbsp;</div>
+		<!-- Default position: 50px -->
+		<div
+			class="carpe_slider"
+			id="slider4"
+			display="display4"
+			style="left: <%= (@currentVolume * 100).to_i -%>px; background-color: #678; border-color: #9AB #345 #345 #9AB;">&nbsp;</div>
+	</div>
+	<div class="carpe_slider_display_holder" style="background-color: #bcd; border-color: #def #9ab #9ab #def;">
+		<!-- Default value: 1.0 -->
+		<input
+			class="carpe_slider_display"
+			id="display4"
+                        name="newVolume"
+			style="background-color: #bcd; color: #234;"
+			type="text"
+			from="0.01"
+			to="1.0"
+			valuecount="1000"
+			decimals="2"
+			value="<%= @currentVolume -%>" />
+	</div>
+</div>
+<div class="spacer">&nbsp;</div>
+<div class="spacer">&nbsp;</div>
+<div class="spacer">&nbsp;</div>
+<p><%= check_box_tag "editing", "playlists", Setting.allow_playlists? %> Allow Playlist Editing? Note: Changes will be lost eventually.</p>
+
+<p>
+  Theme:<% @setting.theme ||= "standard" %>
+  <%= select_tag :theme, options_for_select(@themes, @setting.theme) %>
+</p>
+<p><%= submit_tag "Update" %></p>
+<table width="20%">
+  <tr>
+    <td width="2%">Check</td>
+    <td width="2%">User</td>
+    <td width="2%">Playlist Name</td>
+    <td width="2%">Size</td>
+  </tr>
+<% @playlists.each do |playlist| %>
+<tr>
+<td><%= check_box_tag "playlist[playlist_ids][]", playlist.id, playlist.active? %></td>
+<td><%= playlist.user.name %></td>
+<td><%= playlist.name %></td>
+<td><%= playlist.plentries.length %></td>
+</tr>
+<% end %>
+</table>
+<div class="spacer">&nbsp;</div>
+  <%= submit_tag "Update" %>
+<% end %>

@@ -1,0 +1,39 @@
+<p>
+  <h1>
+  <b>Request:</b>
+  <%= link_to @song.title, :controller => "songs", :id => @song, :action => :pick %>
+</p>
+  </h1>
+<p>
+  <b>Track:</b>
+  <%=h @song.track %> of: <%=h @song.album.songs.length %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%=h @song.year %>
+</p>
+
+<p>
+  <b>Album:</b>
+  <%=link_to @song.album.name, @song.album %>
+</p>
+
+<p>
+  <b>Artist:</b>
+  <%=link_to @song.artist.name, @song.artist %>
+</p>
+
+<p>
+  <b>Genre:</b>
+  <%=h @song.genre.name %>
+</p>
+
+<% if @tags.cover %>
+  <%= link_to image_tag( formatted_song_path(@song, :action => :show, :format => :jpg), :size => "100x100"), :action => :show, :id => @song, :format => :jpg %> 
+<% end %>
+<br />
+Your Selection:
+<br />
+<EMBED SRC="<%= @song.formatted_id %>" HEIGHT="20" WIDTH="200" AUTOSTART="FALSE" CONTROLLER="TRUE">
+<br />

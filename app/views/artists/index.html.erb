@@ -1,0 +1,27 @@
+<h1>Listing artists</h1>
+
+<% form_tag artists_path, :method => 'get' do %>
+  <fieldset class="<%= params[:search] ? "searched" : "search" %>">
+    <%= text_field_tag :search, params[:search], :class =>"box" %>
+    <button class="btn" title="Submit Search">Search</button>
+    <%#= submit_tag "Search", :name => nil, :class=>"btn" %>
+  </fieldset>
+<% end %>
+
+
+<table>
+  <tr>
+    <th>Click To View</th>
+  </tr>
+
+<% for artist in @artists %>
+  <tr>
+    <td><%=link_to artist.name, artist %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= will_paginate @artists %>
+<br>
