@@ -1,13 +1,8 @@
 class Album < ActiveRecord::Base
   has_many :songs
   
-
-  cattr_reader :per_page
-  @@per_page = 10
-  
-  def self.search(search, page)
-    paginate :per_page => 10, :page => page,
-             :conditions => ['name like ?', "%#{search}%"]
+  def self.search(search)
+    where('name like ?', "%#{search}%")
   end
 
   def genre

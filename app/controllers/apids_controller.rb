@@ -1,7 +1,9 @@
 class ApidsController < ApplicationController
+  
   def index
-    @apids = Apid.all :order => :id
+    @apids = Apid.order(:id)
   end
+  
   def update
     if (params[:apid] && params[:apid]["apid_ids"])
       active =  params[:apid]["apid_ids"].collect{|a| a.to_i}

@@ -1,21 +1,14 @@
-<br />
-<h1>Listing songs</h1>
-
-
-<% form_tag songs_path, :method => 'get' do %>
-  <fieldset class="<%= params[:search] ? "searched" : "search" %>">
-    <%= text_field_tag :search, params[:search], :class =>"box" %>
-    <button class="btn" title="Submit Search">Search</button>
-    <%#= submit_tag "Search", :name => nil, :class=>"btn" %>
-  </fieldset>
-<% end %>
-
-<% if Setting.allow_playlists? %>
-  <%= draw_songs(@songs, :playlist_sel, :playlist_add, :checkbox, :no_track, :no_dnd, :request_button) %>
-<% else %>
-  <%= draw_songs(@songs, :no_track, :no_dnd, :request_button) %>
-<% end %>
-<br />
-
-<%= will_paginate @products %>
+h1 Songs
+= form_tag songs_path, :method => "get", :class=> "form-inline" do
+  div class="form-group"
+    = text_field_tag :search, params[:search], :class=>"form-control", :placeholder=>"Song Title"
+  <button type="submit" class="btn btn-default">Search</button>
 <br>
+<br>
+-if Setting.allow_playlists?
+  = draw_songs(@songs, :playlist_sel, :playlist_add, :checkbox, :no_track, :no_dnd, :request_button)
+-else
+  = draw_songs(@songs, :no_track, :no_dnd, :request_button)
+<br>
+
+= will_paginate @songs

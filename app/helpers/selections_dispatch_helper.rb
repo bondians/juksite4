@@ -29,7 +29,7 @@ module SelectionsDispatchHelper
   # :playlist_del <= delet buttor for playlist
   
     def draw_songs(songs, *toggledraws)
-      render :file => Rails.root.join("/app/views/selections_dispatch/_wrapper.html.erb"), :locals => {:songs => songs, :toggledraws => toggledraws}
+      render :file => Rails.root.join("/app/views/selections_dispatch/_wrapper.html.slim"), :locals => {:songs => songs, :toggledraws => toggledraws}
     end
     
 end

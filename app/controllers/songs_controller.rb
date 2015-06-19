@@ -2,17 +2,11 @@ class SongsController < ApplicationController
   
   def index
     params[:page] ||= 1
-#    if params[:search]
-      @songs = Song.paginate(page: params[:page], :per_page => 50).search(params[:search])
-    
-      respond_to do |format|
-        format.html
-        format.xml { render :xml => @songs }
-      end
-#    else
-#      @songs = Song.paginate :page => params[:page], :order => 'created_at DESC'
-#    end
-
+    @songs = Song.paginate(page: params[:page], :per_page => 50).search(params[:search])    
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @songs }
+    end
   end
 
   # GET /songs/1

@@ -1,42 +1,20 @@
-<%= javascript_include_tag 'jquery.tablednd' %>
- <% form_tag :controller => :selections_dispatch, :action => :dispatch do %>
-
-<table id="table-1">
-  <tr class="nodrop nodrag">
-    <% if toggledraws.include?(:checkbox) %> <th width="5%" >&nbsp;</th> <% end %>
-    <% if toggledraws.include?(:request_button)  %> <th width="5%" >&nbsp;</th> <% end %>
-    <% unless toggledraws.include?(:no_title)    %> <th width="25%">Title</th> <% end %>
-    <% unless toggledraws.include?(:no_track)    %> <th width="5%" >Track</th>  <% end %>
-    <% unless toggledraws.include?(:no_artist)   %> <th width="25%">Artist</th> <% end %>
-    <% unless toggledraws.include?(:no_album)    %> <th width="20%">Album</th> <% end %>
-    <% unless toggledraws.include?(:no_genre)    %> <th width="10%">Genre</th> <% end %>
-
-
-  </tr>
-    <% for song in songs %>
-        <%= render :partial => 'selections_dispatch/song', :locals => { :song => song, :toggledraws => toggledraws, :cur_class => cycle("cssAlternating1", "cssAlternating2") } %>
-    <% end %>
-</table>
-
-<br />
-
-  <% if toggledraws.include?(:playlist_sel) %><p><%= collection_select :playlist, :id, (Playlist.all :order => :user_id, :include => :user), :id, :name %></p> <% end %>
-  <% if toggledraws.include?(:playlist_add) %><p><%= submit_tag "Add to Playlist",      :name => "submit" %></p> <% end %>
-  <%     if toggledraws.include?(:playlist_del)    %><p><%= submit_tag "Remove from Playlist", :name => "submit" %></p> <% end %>
-  <%     if toggledraws.include?(:playlist_del)    %><p><%= submit_tag "Set Playlist Order", :name => "submit"            %></p> <% end %>
-<% unless toggledraws.include?(:playlist_del) %>
- <%     unless toggledraws.include?(:no_dnd)    %><p><%= submit_tag "Set Order", :name => "submit"            %></p> <% end %>
- <%     if toggledraws.include?(:remove_current) %><p><%= submit_tag "Remove Selected", :name => "submit"               %></p> <% end %>
-<% end %>
-<% end %>
-
-<% unless toggledraws.include?(:no_dnd) %>
-<script type="text/javascript">
-  $(document).ready(function() {
-      // Initialise the table
-      $("#table-1").tableDnD({
-        onDragClass: "cssNoDay1"
-      });
-  });
-  </script>
-<% end %>
+= javascript_include_tag 'jquery.tablednd'
+=form_tag :controller => :selections_dispatch, :action => :dispatch do
+  table class="table table-striped" id="table-1"
+    tr class="nodrop nodrag"
+      -if toggledraws.include?(:checkbox)
+        th &nbsp;
+      -if toggledraws.include?(:request_button)
+        th &nbsp;
+      -unless toggledraws.include?(:no_title)
+        th Title
+      -unless toggledraws.include?(:no_track)
+        th Track
+      -unless toggledraws.include?(:no_artist)
+        th Artist
+      -unless toggledraws.include?(:no_album)
+        th Album
+      -unless toggledraws.include?(:no_genre)
+        th Genre
+    - for song in songs
+      = render :partial => 'selections_dispatch/song', :locals => { :song => song, :toggledraws => toggledraws }

@@ -1,34 +1,15 @@
-<h1>Listing albums</h1>
-
-  <% form_tag albums_path, :method => 'get' do %>
-  <fieldset class="<%= params[:search] ? "searched" : "search" %>">
-    <%= text_field_tag :search, params[:search], :class =>"box" %>
-    <button class="btn" title="Submit Search">Search</button>
-    <%#= submit_tag "Search", :name => nil, :class=>"btn" %>
-  </fieldset>
-<% end %>
-
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Artist</th>
-    <th>Genre</th>
-  </tr>
-
-<% for album in @albums %>
-  <tr>
-    <td><%= link_to album.name, album %></td>
-    <td><%=h album.artists.first.name %><%= album.artists.length > 1 ? " et al" : "" %></td>
-    <td><%=h album.genre.name %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= will_paginate @albums %>
+h1 Albums
+= form_tag albums_path, :method => "get", :class=> "form-inline" do
+  div class="form-group"
+    = text_field_tag :search, params[:search], :class=>"form-control", :placeholder=>"Album"
+  <button type="submit" class="btn btn-default">Search</button>
 <br>
+<br>
+table class="table table-striped"
+  -for album in @albums
+    tr
+      td =h link_to album.name, album
+      td =h album.artists.first.name + (album.artists.length > 1 ? " et al" : "")
+      td =h album.genre.name
 
-<br />
-
+= will_paginate @albums
