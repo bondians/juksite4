@@ -1,5 +1,12 @@
 This site is meant to work with cocoaJukebox and is called '4' because of the rails version its build on.
 
+You must have taglib installed in order to use taglib-ruby.
+
+Debian/Ubuntu: sudo apt-get install libtag1-dev
+Fedora/RHEL: sudo yum install taglib-devel
+Brew: brew install taglib
+MacPorts: sudo port install taglib
+
 
 Juksite4
 ================

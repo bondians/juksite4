@@ -4,7 +4,7 @@ class Randlist < ActiveRecord::Base
   ## Need to fix this logic, but need stub for now
   def self.padRands
     #playlist = Playlist.find(1).songs
-    playlist = Playlist.find_all_by_active true
+    playlist = Playlist.where(:active => true)
     if playlist.empty?
       playlist = Playlist.all
     end
@@ -14,7 +14,7 @@ class Randlist < ActiveRecord::Base
       new = Randlist.new
       if more_than_ten
         min = [20, (list.length * 0.2).to_i].min
-        already_played = (Currentsong.all :order => 'id DESC', :limit => min).map { |s| s.song.id}
+        already_played = (Currentsong.order('id DESC').limit min).map { |s| s.song.id}
         prospective_song = nil
         until (!!prospective_song && (!already_played.include?(prospective_song) ))
           prospective_song = list[rand(list.length)]

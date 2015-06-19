@@ -13,7 +13,7 @@ class SongsController < ApplicationController
   # GET /songs/1.xml
   def show
     @song = Song.find(params[:id])
-    @tags = Tagger.new @song.file
+    #@tags = Tagger.new @song.file
     @songs = params[:songs]
     
     respond_to do |format|
@@ -29,8 +29,8 @@ class SongsController < ApplicationController
 #        format.send(@song.songtype.identifier) { send_song_file @song }
 #      end
       format.txt
-      format.jpg {send_song_cover @tags} if @tags.cover
-      format.png {send_song_cover @tags} if @tags.cover
+      #format.jpg {send_song_cover @tags} if @tags.cover
+      #format.png {send_song_cover @tags} if @tags.cover
       format.tar {send_song_tar @songs}
 
     end

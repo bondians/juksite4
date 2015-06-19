@@ -10,8 +10,8 @@ class NextsongsController < ApplicationController
       if Randlist.count < 10
         Randlist.padRands
       end
-      item = Reqlist.first :order => :sort
-      item ||= Randlist.first :order => :sort
+      item = Reqlist.order(:sort).first
+      item ||= Randlist.order(:sort).first
     end
 
       
