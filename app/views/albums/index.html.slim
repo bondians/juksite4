@@ -2,7 +2,9 @@ h1 Albums
 = form_tag albums_path, :method => "get", :class=> "form-inline" do
   div class="form-group"
     = text_field_tag :search, params[:search], :class=>"form-control", :placeholder=>"Album"
-  <button type="submit" class="btn btn-default">Search</button>
+  <button type="submit" class="btn btn-default" do >
+  <i class="glyphicon glyphicon-search"></i> 
+  </button>
 <br>
 <br>
 table class="table table-striped"
