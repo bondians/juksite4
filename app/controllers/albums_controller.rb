@@ -14,7 +14,7 @@ class AlbumsController < ApplicationController
   # GET /albums/1
   # GET /albums/1.xml
   def show
-    @album = Album.where(params[:id]).includes(:songs).first
+    @album = Album.includes(:songs).find(params[:id])
   end
 
 end
