@@ -2,6 +2,71 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+// These default colors will be used by a bunch of stuff, so edit these
+$BackgroundMain:#B4E4FC;
+$BackgroundImage:'hibiscus_blue.png';
+
+
+$NavBarStartGradient:#B1ADFF;
+$NavBarEndGradient:#B6E3FF;
+
+$NavBarText:#A400B1; // This is the only NavBar text color that gets used right now
+$NavBarTextAlt:#262626; // Not used
+$NavBarTextLink:#AAF;   // Not used
+
+$TableMain:#A5B8FB;
+$TableAlternate:#F8AEDE;
+$TableTextMain:#0000FE;
+$TableTextAlt:#AD0073;
+
+// Alert boxes colors
+$AlertSuccessBox:#70C6F9;
+$AlertSuccessText:#05346C;
+
+div.imageSub { 
+  position: relative; 
+}
+
+div.imageSub img { 
+  z-index: 1; 
+}
+
+div.imageSub div {
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  bottom: 0;
+  padding: 4px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  overflow: hidden;
+}
+
+div.imageSub div.blackbg {
+  z-index: 2;
+  background-color: #000;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+  
+}
+
+div.imageSub div.label {
+  z-index: 3;
+  color: white;
+  
+}
+
+div.imageSub {
+  background: url($BackgroundImage) no-repeat;
+  background-size: 120px 120px;
+  background-position: right 20px top 10px;
+  
+}
+
+
 // make all images responsive by default
 img {
   @extend .img-responsive;
@@ -9,10 +74,10 @@ img {
   }
   
 .navbar-default {
-    background-image: -webkit-linear-gradient(top, #fff 0, #f8f8f8 100%);
-    background-image: -o-linear-gradient(top, #fff 0, #f8f8f8 100%);
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#f8f8f8));
-    background-image: linear-gradient(to bottom, #C1E9FE 0, #C0BEFE 100%);
+    background-image: -webkit-linear-gradient(top, $NavBarStartGradient 0, $NavBarEndGradient 100%);
+    background-image: -o-linear-gradient(top, $NavBarStartGradient 0, $NavBarEndGradient 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from($NavBarStartGradient), to($NavBarEndGradient));
+    background-image: linear-gradient(to bottom, $NavBarStartGradient 0, $NavBarEndGradient 100%);
     //filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff8f8f8', GradientType=0);
     //filter: progid: DXImageTransform.Microsoft.gradient(enabled=false);
     background-repeat: repeat-x;
@@ -22,10 +87,10 @@ img {
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.open>a {
-  background-image: -webkit-linear-gradient(top, #dbdbdb 0, #e2e2e2 100%);
-  background-image: -o-linear-gradient(top, #dbdbdb 0, #e2e2e2 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#dbdbdb), to(#e2e2e2));
-  background-image: linear-gradient(to bottom, #C1E9FE 0, #C0BEFE 100%);
+  background-image: -webkit-linear-gradient(top, $NavBarStartGradient 0, $NavBarEndGradient 100%);
+  background-image: -o-linear-gradient(top, $NavBarStartGradient 0, $NavBarEndGradient 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from($NavBarStartGradient), to($NavBarEndGradient));
+  background-image: linear-gradient(to bottom, $NavBarStartGradient 0, $NavBarEndGradient 100%);
   //filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ffdbdbdb', endColorstr='#ffe2e2e2', GradientType=0);
   background-repeat: repeat-x;
   -webkit-box-shadow: inset 0 3px 9px rgba(0, 0, 0, .075);
@@ -34,19 +99,19 @@ img {
 
 .navbar-brand {
     text-shadow: 0 1px 0 rgba(55, 55, 55, .5);
-    color: #b534aa !important;
+    color: $NavBarTextLink !important;
 }
 
 .navbar-nav>li>a {
     text-shadow: 0 1px 0 rgba(255, 255, 255, .25);
-    //color: #cb9cc8 !important;
+    color: $NavBarTextLink !important;
 }
 
 .navbar-inverse {
-  background-image: -webkit-linear-gradient(top, #C0CBFE, #C2FFFE  100%);
-  background-image: -o-linear-gradient(top, #3c3c3c 0, #222 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#3c3c3c), to(#222));
-  background-image: linear-gradient(to bottom, #C1E9FE 0, #C0BEFE 100%);
+  background-image: -webkit-linear-gradient(top, $NavBarStartGradient, $NavBarEndGradient  100%);
+  background-image: -o-linear-gradient(top, $NavBarStartGradient 0, $NavBarEndGradient 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from($NavBarStartGradient), to($NavBarEndGradient));
+  background-image: linear-gradient(to bottom, $NavBarStartGradient 0, $NavBarEndGradient 100%);
   //filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ff3c3c3c', endColorstr='#ff222222', GradientType=0);
   //filter: progid: DXImageTransform.Microsoft.gradient(enabled=false);
   background-repeat: repeat-x;
@@ -54,10 +119,10 @@ img {
 }
 
 .navbar-inverse .navbar-nav>.active>a {
-  background-image: -webkit-linear-gradient(top, #C0CBFE, #C2FFFE  100%);
-  background-image: -o-linear-gradient(top, #080808 0, #0f0f0f 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#F00), to(#F55));
-  background-image: linear-gradient(to bottom, #C1E9FE 0, #C0BEFE 100%);
+  background-image: -webkit-linear-gradient(top, $NavBarStartGradient, $NavBarEndGradient  100%);
+  background-image: -o-linear-gradient(top, $NavBarStartGradient 0, $NavBarEndGradient 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from($NavBarStartGradient), to($NavBarEndGradient));
+  background-image: linear-gradient(to bottom, $NavBarStartGradient 0, $NavBarEndGradient 100%);
   //filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ff080808', endColorstr='#ff0f0f0f', GradientType=0);
   background-repeat: repeat-x;
   -webkit-box-shadow: inset 0 3px 9px rgba(0, 0, 0, .25);
@@ -65,10 +130,10 @@ img {
 }
 
 .navbar-inverse .navbar-nav>.open>a {
-  background-image: -webkit-linear-gradient(top, #C0CB00, #C2FF00  100%);
-  background-image: -o-linear-gradient(top, #080808 0, #0f0f0f 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#F00), to(#F55));
-  background-image: linear-gradient(to bottom, #C1E900 0, #C0BE00 100%);
+  background-image: -webkit-linear-gradient(top, $NavBarStartGradient, $NavBarEndGradient  100%);
+  background-image: -o-linear-gradient(top, $NavBarStartGradient 0, $NavBarEndGradient 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from($NavBarStartGradient), to($NavBarEndGradient));
+  background-image: linear-gradient(to bottom, $NavBarStartGradient 0, $NavBarEndGradient 100%);
   //filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ff080808', endColorstr='#ff0f0f0f', GradientType=0);
   background-repeat: repeat-x;
   -webkit-box-shadow: inset 0 3px 9px rgba(0, 0, 0, .25);
@@ -78,22 +143,22 @@ img {
 .navbar-inverse .navbar-brand {
   // , .navbar-inverse .navbar-nav>li>a
     text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
-    color: #cb9cc8 !important;
+    color: $NavBarText !important;
     
 }
 
 .navbar-inverse {
-  color: #a1669f !important;
+  color: $NavBarTextAlt !important;
   
 }
 
 .navbar-nav>li>a {
-  color: #A03333 !important;
+  color: $NavBarTextAlt !important;
   
 }
 
 .navbar-nav>li>a active{
-  color: #AFFFFF !important;
+  color: $NavBarTextAlt !important;
   
 }
 
@@ -154,19 +219,41 @@ table {
 .table-striped>tbody>tr:nth-child(odd)>td,
 .table-striped>tbody>tr:nth-child(odd)>th {
   // odd rows will have these attributes
-  background-color: #FDBEE2;
+  background-color: $TableMain;
+  color: $TableTextMain !important;
+  
   
 }
+
+.table-striped>tbody>tr:nth-child(odd)>td>a,
+.table-striped>tbody>tr:nth-child(odd)>th>a {
+  // odd rows will have these attributes
+  background-color: $TableMain;
+  color: $TableTextMain !important;
+}
+
+
 .table-striped>tbody>tr:nth-child(even)>td,
 .table-striped>tbody>tr:nth-child(even)>th {
   // every other row (even) will have these attributes
-  background-color: #C1E9FE;
+  background-color: $TableAlternate;
+  color: $TableTextAlt !important;
+  }
+
+.table-striped>tbody>tr:nth-child(even)>td>a,
+.table-striped>tbody>tr:nth-child(even)>th>a {
+  // every other row (even) will have these attributes
+  background-color: $TableAlternate;
+  color: $TableTextAlt !important;
   }
 // apply styles to HTML elements
 // to make views framework-neutral
 main {
   @extend .container;
   background-color: #BFEAFB;
+  background: url($BackgroundImage) no-repeat;
+  background-size: 120px 120px;
+  background-position: right 20px top 10px;
   padding-bottom: 80px;
   width: 100%;
   margin-top: 51px; // accommodate the navbar
@@ -175,7 +262,9 @@ section {
   @extend .row;
   margin-top: 20px;
   }
-alert alert-success {
-  background-color: #7ED2F7 !important;
+  
+.alert-success {
+  background-color: $AlertSuccessBox !important;
+  color: $AlertSuccessText !important;
   
   }
