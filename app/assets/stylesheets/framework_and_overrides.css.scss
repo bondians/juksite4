@@ -7,15 +7,86 @@ img {
   @extend .img-responsive;
   margin: 0 auto;
   }
-.navbar {
-  background-color: #0808DF;
+  
+.navbar-default {
+    background-image: -webkit-linear-gradient(top, #fff 0, #f8f8f8 100%);
+    background-image: -o-linear-gradient(top, #fff 0, #f8f8f8 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#f8f8f8));
+    background-image: linear-gradient(to bottom, #C1E9FE 0, #C0BEFE 100%);
+    //filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff8f8f8', GradientType=0);
+    //filter: progid: DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat: repeat-x;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 5px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 5px rgba(0, 0, 0, .075)
 }
-// override for the 'Home' navigation link
-.navbar-brand {
-  font-size: inherit;
-  background-color: #0700BE;
-  }
 
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.open>a {
+  background-image: -webkit-linear-gradient(top, #dbdbdb 0, #e2e2e2 100%);
+  background-image: -o-linear-gradient(top, #dbdbdb 0, #e2e2e2 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#dbdbdb), to(#e2e2e2));
+  background-image: linear-gradient(to bottom, #C1E9FE 0, #C0BEFE 100%);
+  //filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ffdbdbdb', endColorstr='#ffe2e2e2', GradientType=0);
+  background-repeat: repeat-x;
+  -webkit-box-shadow: inset 0 3px 9px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 3px 9px rgba(0, 0, 0, .075)
+}
+
+.navbar-brand, .navbar-nav>li>a {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .25)
+}
+
+.navbar-inverse {
+  background-image: -webkit-linear-gradient(top, #C0CBFE, #C2FFFE  100%);
+  background-image: -o-linear-gradient(top, #3c3c3c 0, #222 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#3c3c3c), to(#222));
+  background-image: linear-gradient(to bottom, #C1E9FE 0, #C0BEFE 100%);
+  //filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ff3c3c3c', endColorstr='#ff222222', GradientType=0);
+  //filter: progid: DXImageTransform.Microsoft.gradient(enabled=false);
+  background-repeat: repeat-x;
+  border-radius: 4px
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.open>a {
+  background-image: -webkit-linear-gradient(top, #C0CBFE, #C2FFFE  100%);
+  background-image: -o-linear-gradient(top, #080808 0, #0f0f0f 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#F00), to(#F55));
+  background-image: linear-gradient(to bottom, #C1E9FE 0, #C0BEFE 100%);
+  //filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ff080808', endColorstr='#ff0f0f0f', GradientType=0);
+  background-repeat: repeat-x;
+  -webkit-box-shadow: inset 0 3px 9px rgba(0, 0, 0, .25);
+  box-shadow: inset 0 3px 9px rgba(0, 0, 0, .25)
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a {
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .25)
+}
+
+.navbar-fixed-bottom, .navbar-fixed-top, .navbar-static-top {
+    border-radius: 0
+}
+
+
+//.navbar {
+//  background-color: #FEF5C0;
+//  color: #FF0000;
+//}
+//
+//.nav {
+//  color: #FF0000;
+//}
+//// override for the 'Home' navigation link
+//.navbar-brand {
+//  font-size: inherit;
+//  background-color: #E5FFFE;
+//  color: #00125C !important;
+//  # border-color: #000;
+//  }
+//
+//.navbar-brand > a:hover {
+//  color: #FF0000 !important;
+//}
+ 
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes
 // to make views framework-neutral
@@ -35,11 +106,32 @@ img {
   @extend .btn-primary;
   @extend .btn-lg;
   }
+table {
+  // top of table color
+  // applies to "default" parts of other kinds of tables
+  // like the table-striped
+  background-color: #0080FF;  
+  }
+  
+.table-striped {
+  
+}
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+  // odd rows will have these attributes
+  background-color: #FDBEE2;
+  
+}
+.table-striped>tbody>tr:nth-child(even)>td,
+.table-striped>tbody>tr:nth-child(even)>th {
+  // every other row (even) will have these attributes
+  background-color: #C1E9FE;
+  }
 // apply styles to HTML elements
 // to make views framework-neutral
 main {
   @extend .container;
-  background-color: #F0A;
+  background-color: #BFEAFB;
   padding-bottom: 80px;
   width: 100%;
   margin-top: 51px; // accommodate the navbar
@@ -47,4 +139,7 @@ main {
 section {
   @extend .row;
   margin-top: 20px;
+  }
+alert alert-success {
+  background-color: #6FC;
   }
