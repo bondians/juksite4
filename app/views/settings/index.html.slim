@@ -1,0 +1,21 @@
+h1 Select Playlists
+
+= link_to "Set Active m4p types", :apids
+
+= form_tag settings_path, :method => "update", :class=> "form-inline" do
+  div class="form-group"
+    <button type="submit" class="btn btn-default" do >Submit</button>
+    p
+    table class="table table-striped" id="table-1"
+        tr
+          th Check
+          th User
+          th Playlist Name
+          th Size
+        - @playlists.each do |playlist|
+          tr
+            td =check_box_tag "playlist[playlist_ids][]", playlist.id, playlist.active?
+            td =playlist.user.name
+            td =playlist.name
+            td =playlist.plentries.length
+    <button type="submit" class="btn btn-default" do >Submit</button>

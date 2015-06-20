@@ -1,10 +1,10 @@
 class SettingsController < ApplicationController
   
   def index
-    @playlists = Playlist.all :include => [:user, :plentries]
+    @playlists = Playlist.includes(:user, :plentries).to_a
     @playlists.sort! {|x,y| x.user.name <=> y.user.name}
     @setting = Setting.current
-    @themes = Setting.themes
+    #@themes = Setting.themes
     vol = `defaults read com.deepbondi.cocoaJukebox kMasterVolume`
     vol = 1.0 if (vol.empty?)
     @currentVolume = vol.to_f
@@ -15,9 +15,9 @@ class SettingsController < ApplicationController
     vol = 1.0 if (vol.empty?)
     currentVolume = vol.to_f
     newVolume = params[:newVolume].to_f
-    newValume = 1.0 if newVolume > 1.0
+    newVolume = 1.0 if newVolume > 1.0
     unless (currentVolume == newVolume)
-      app = "#{RAILS_ROOT}/script/jookieControl -volume"
+      app = (Rails.root + "/script/jookieControl -volume")
       system "#{app} #{newVolume}"
     end
     if (params[:editing] && params[:editing] == "playlists")

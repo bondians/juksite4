@@ -40,9 +40,9 @@ class Setting < ActiveRecord::Base
   end
   
   def self.themes
-    stuff = `ls "#{RAILS_ROOT}/public/themes/"`
-    list = stuff.to_a
-    list.each {|b| b.chomp!}
+    #stuff = `ls "#{RAILS_ROOT}/public/themes/"`
+    #list = stuff.to_a
+    #list.each {|b| b.chomp!}
   end
   
 end

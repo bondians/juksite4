@@ -8,9 +8,11 @@ resources :sonviews
 resources :currentsongs
 resources :songtypes
 resources :selections
-resources :settings
+
 resources :nextsongs
-  
+
+get  'settings', to: "settings#index"
+post 'settings', to: "settings#update"
 
 get 'songs/pick/:id', to: "songs#pick#:id"
 resources :songs
