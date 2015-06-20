@@ -7,9 +7,13 @@ img {
   @extend .img-responsive;
   margin: 0 auto;
   }
+.navbar {
+  background-color: #0808DF;
+}
 // override for the 'Home' navigation link
 .navbar-brand {
   font-size: inherit;
+  background-color: #0700BE;
   }
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
@@ -35,7 +39,7 @@ img {
 // to make views framework-neutral
 main {
   @extend .container;
-  background-color: #F30;
+  background-color: #F0A;
   padding-bottom: 80px;
   width: 100%;
   margin-top: 51px; // accommodate the navbar
