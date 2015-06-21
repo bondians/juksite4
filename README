@@ -1,5 +1,7 @@
 This site is meant to work with cocoaJukebox and is called '4' because of the rails version its build on.
 
+Uses rails 4.2.2 ruby 2.2.1
+
 You must have taglib installed in order to use taglib-ruby.
 
 Debian/Ubuntu: sudo apt-get install libtag1-dev

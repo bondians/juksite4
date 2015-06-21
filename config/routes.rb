@@ -12,6 +12,7 @@ resources :selections
 resources :nextsongs
 
 get  'settings', to: "settings#index"
+post 'settings/action', to: "settings#action"
 post 'settings', to: "settings#update"
 post 'settings/setvolume', to: "settings#setvolume"
 

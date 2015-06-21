@@ -46,4 +46,22 @@ class SettingsController < ApplicationController
     render :nothing => true, :status => 200, :content_type => 'text/html'
   end
   
+  def action
+    app = (Rails.root.to_s + "/script/jookieControl -action")
+    what = params[:do]
+    if what
+      case what
+      when "playerSkip"
+        system "#{app} skipsong"
+      when "playerStartStop"
+        system "#{app} startstop"
+      when "playerPause"
+        system "#{app} pause"
+      else
+        
+      end
+    end
+    render :nothing => true, :status => 200, :content_type => 'text/html'
+  end
+  
 end
