@@ -1,5 +1,10 @@
 h1 Select Playlists
 
+p
+  b Volume Control
+    <p> <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="1" data-slider-step="0.01" data-slider-value="#{@currentVolume}" data-slider-id="RC" id="R" data-slider-tooltip="show" >
+		
+
 = link_to "Set Active m4p types", :apids
 
 = form_tag settings_path, :method => "update", :class=> "form-inline" do
@@ -19,3 +24,12 @@ h1 Select Playlists
             td =playlist.name
             td =playlist.plentries.length
     <button type="submit" class="btn btn-default" do >Submit</button>
+
+javascript:
+  var RGBChange = function() {
+	  $.post('/settings/setvolume?newVolume='+r.getValue())
+  };
+	
+  var r = $('#R').slider()
+		.on('slideStop', RGBChange)
+		.data('slider');

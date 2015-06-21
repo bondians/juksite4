@@ -31,11 +31,12 @@ class NextsongsController < ApplicationController
   end
   
   def action
-    app = "#{RAILS_ROOT}/script/jookieControl -action"
+    app = (Rails.root + "/script/jookieControl -action")
     what = params[:do]
     if what
       case what
       when "playerSkip"
+        debugger
         system "#{app} skipsong"
       when "playerStartStop"
         system "#{app} startstop"

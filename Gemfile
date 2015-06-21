@@ -20,6 +20,7 @@ gem 'slim-rails'
 gem 'therubyracer', :platform=>:ruby
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
+gem 'bootstrap-slider-rails'
 group :development do
   gem 'better_errors'
   gem 'hub', :require=>nil

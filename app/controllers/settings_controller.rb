@@ -11,15 +11,6 @@ class SettingsController < ApplicationController
   end
   
   def update
-    vol = `defaults read com.deepbondi.cocoaJukebox kMasterVolume`
-    vol = 1.0 if (vol.empty?)
-    currentVolume = vol.to_f
-    newVolume = params[:newVolume].to_f
-    newVolume = 1.0 if newVolume > 1.0
-    unless (currentVolume == newVolume)
-      app = (Rails.root + "/script/jookieControl -volume")
-      system "#{app} #{newVolume}"
-    end
     if (params[:editing] && params[:editing] == "playlists")
       Setting.allow_playlists= true
     else
@@ -41,4 +32,18 @@ class SettingsController < ApplicationController
     end
     redirect_to(selections_url)
   end
+  
+  def setvolume
+    vol = `defaults read com.deepbondi.cocoaJukebox kMasterVolume`
+    vol = 1.0 if (vol.empty?)
+    currentVolume = vol.to_f
+    newVolume = params[:newVolume].to_f
+    newVolume = 1.0 if newVolume > 1.0
+    unless (currentVolume == newVolume)
+      app = (Rails.root.to_s + "/script/jookieControl -volume")
+      system "#{app} #{newVolume}"
+    end
+    render :nothing => true, :status => 200, :content_type => 'text/html'
+  end
+  
 end

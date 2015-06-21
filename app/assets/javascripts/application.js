@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require jquery.tablednd.min
 //= require bootstrap-sprockets
+//= require bootstrap-slider
 //= require_tree .
