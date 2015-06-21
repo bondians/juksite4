@@ -1,4 +1,4 @@
-h1 Songs
+h3 Songs
 = form_tag songs_path, :method => "get", :class=> "form-inline" do
   div class="form-group"
     = text_field_tag :search, params[:search], :class=>"form-control", :placeholder=>"Song Title"
@@ -10,7 +10,7 @@ h1 Songs
 -if Setting.allow_playlists?
   = draw_songs(@songs, :playlist_sel, :playlist_add, :checkbox, :no_track, :no_dnd, :request_button)
 -else
-  = draw_songs(@songs, :no_track, :no_dnd, :request_button)
+  = draw_songs(@songs, :no_track, :no_dnd, :request_button, :no_genre)
 <br>
 
 = will_paginate @songs
