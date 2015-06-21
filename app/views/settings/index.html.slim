@@ -1,12 +1,15 @@
 h1 Select Playlists
 p
-  div class="form-group"
-    = button_to "/settings/action?do=playerSkip", :class=>"btn-defaultglyphicon message_plus", :remote => true do
-      <i class="glyphicon glyphicon-fast-forward"></i>
-    = button_to "/settings/action?do=playerStartStop", :class=>"btn-defaultglyphicon message_plus", :remote => true do
-      <i class="glyphicon glyphicon-play"></i>/<i class="glyphicon glyphicon-stop"></i>
-    = button_to "/settings/action?do=playerPause", :class=>"btn-defaultglyphicon message_plus", :remote => true do
-      <i class="glyphicon glyphicon-pause"></i>
+  div class="form-inline"
+    div class="form-group"
+      = button_to "/settings/action?do=playerSkip", :class=>"btn-defaultglyphicon message_plus", :remote => true do
+        <i class="glyphicon glyphicon-fast-forward"></i>
+    div class="form-group"
+      = button_to "/settings/action?do=playerStartStop", :class=>"btn-defaultglyphicon message_plus", :remote => true do
+        <i class="glyphicon glyphicon-play"></i>/<i class="glyphicon glyphicon-stop"></i>
+    div class="form-group"
+      = button_to "/settings/action?do=playerPause", :class=>"btn-defaultglyphicon message_plus", :remote => true do
+        <i class="glyphicon glyphicon-pause"></i>
 
   b Volume Control
     <p> <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="1" data-slider-step="0.01" data-slider-value="#{@currentVolume}" data-slider-id="RC" id="R" data-slider-tooltip="show" >
