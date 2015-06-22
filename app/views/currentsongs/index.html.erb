@@ -1,5 +1,5 @@
 <br />
-<h1>Recently Played Songs</h1>
+<h4>Recently Played Songs</h1>
 <% songs = @playentries.map{|s| s.song} %>
 
 <% form_tag songs_path, :method => 'get' do %>
@@ -13,7 +13,7 @@
 <% if Setting.allow_playlists? %>
   <%= draw_songs(songs, :playlist_sel, :playlist_add, :checkbox, :no_track, :no_dnd, :request_button) %>
 <% else %>
-  <%= draw_songs(songs, :no_track, :no_dnd, :request_button) %>
+  <%= draw_songs(songs, :no_track, :no_dnd, :request_button, :no_genre) %>
 <% end %>
 
 <br />
