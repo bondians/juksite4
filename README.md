@@ -16,10 +16,10 @@ Getting Started
 Documentation and Support
 -------------------------
 
-To just run it in testing mode, use `**rails s**` from the command line.
+To just run it in testing mode, use **`rails s`** from the command line.
 
 All of the normal Ruby on Rails options are available. You can start the server 
-on a specific IP address, for example, by using `** <cay> **`.
+on a specific IP address, for example, by using **` <cay> `**.
   
 There are defined colors at the top of the file `framework_and_overrides.css` that 
 will change the appearance of the web pages.
