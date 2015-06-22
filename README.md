@@ -1,10 +1,37 @@
 Juksite4
 ================
 
+This is a web front-end "DJ" that lets users choose songs to play at parties. 
+It requires cocoaJukebox.app to actually play the songs, 
+and a sqlite3 file/database of all the songs, artists, &c and their locations on disk.
+
 This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
 provided by the [RailsApps Project](http://railsapps.github.io/).
 
-Rails Composer is open source and supported by subscribers. Please join RailsApps to support development of Rails Composer.
+
+
+Getting Started
+---------------
+
+Documentation and Support
+-------------------------
+
+To just run it in testing mode, use '''rails s''' from the command line.
+
+Issues
+-------------
+
+Similar Projects
+----------------
+
+Contributing
+------------
+
+Credits
+-------
+
+License
+-------
 
 Problems? Issues?
 -----------
@@ -25,24 +52,3 @@ This application requires:
 - Rails 4.2.2
 
 Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
-
-Getting Started
----------------
-
-Documentation and Support
--------------------------
-
-Issues
--------------
-
-Similar Projects
-----------------
-
-Contributing
-------------
-
-Credits
--------
-
-License
--------
