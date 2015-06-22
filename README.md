@@ -16,7 +16,7 @@ Getting Started
 Documentation and Support
 -------------------------
 
-To just run it in testing mode, use '''rails s''' from the command line.
+To just run it in testing mode, use **rails s** from the command line.
 
 Issues
 -------------
