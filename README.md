@@ -16,7 +16,18 @@ Getting Started
 Documentation and Support
 -------------------------
 
-To just run it in testing mode, use **rails s** from the command line.
+To just run it in testing mode, use `**rails s**` from the command line.
+
+All of the normal Ruby on Rails options are available. You can start the server 
+on a specific IP address, for example, by using `** <cay> **`.
+  
+There are defined colors at the top of the file `framework_and_overrides.css` that 
+will change the appearance of the web pages.
+For example, `$TableMain:#A5B8FB;` is definition of the color used on odd-numbered table row backgrounds.
+Change the hex value there and those elements will use the new color.
+
+`$BackgroundImage:'hibiscus_blue.png';` defines the image to show in the upper-right of each page.
+If the file `hibiscus_blue.png` is present in the app/assets/images/ folder, it'll be used.
 
 Issues
 -------------
