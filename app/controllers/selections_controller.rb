@@ -12,4 +12,10 @@ class SelectionsController < ApplicationController
     
   end
   
+  def set_order
+    new_index = params[:index]
+    Reqlist.set_index(new_index)
+    redirect_to(selections_url)
+  end
+  
 end

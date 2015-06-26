@@ -1,5 +1,5 @@
 = javascript_include_tag 'jquery.tablednd'
-=form_tag :controller => :selections_dispatch, :action => :dispatch do
+=form_tag :controller => :selections, :action => :set_order do
   table class="table table-striped" id="table-1"
     tr class="nodrop nodrag"
       -if toggledraws.include?(:checkbox)
@@ -18,3 +18,12 @@
         th Genre
     - for song in songs
       = render :partial => 'selections_dispatch/song', :locals => { :song => song, :toggledraws => toggledraws }
+  <button type="submit" class="btn btn-default" do >Set Order</button>
+
+javascript:
+  $(document).ready(function() {
+      // Initialise the table
+      $("#table-1").tableDnD({
+        onDragClass: "cssNoDay1"
+      });
+  });

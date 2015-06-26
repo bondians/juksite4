@@ -22,7 +22,7 @@ resources :albums
 resources :artists
 resources :genres
 
-post 'selections_dispatch/dispatch', to: 'selections_dispatch#dispatch'
+post 'selections/set_order', to: 'selections#set_order'
 
 get 'apids', to: 'apids#index'
 post 'apids/update', to: 'apids#update'

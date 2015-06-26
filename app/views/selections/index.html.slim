@@ -1,0 +1,19 @@
+- if Currentsong.playing
+  h5 Now Playing: #{Currentsong.playing}
+- else
+  h1 Now Playing: None
+= form_tag songs_path, :method => "get", :class=> "form-inline" do
+  div class="form-group"
+    = text_field_tag :search, params[:search], :class=>"form-control", :placeholder=>"Song Title"
+  <button type="submit" class="btn btn-default" do >
+  <i class="glyphicon glyphicon-search"></i> 
+  </button>
+<br>
+- unless @reqsongs.empty?
+  b Request Queue
+  = draw_songs(@reqsongs, :checkbox, :remove_current, :no_track, :no_genre )
+<br>
+  b Random Queue
+= draw_songs(@randsongs, :checkbox, :remove_current, :no_track, :no_dnd, :no_genre, :request_button)
+
+javascript:

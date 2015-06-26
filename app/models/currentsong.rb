@@ -3,7 +3,7 @@ class Currentsong < ActiveRecord::Base
   
   def self.playing
     song = `defaults read com.deepbondi.cocoaJukebox kCurrentSong`
-    song.chomp!
+    song.chomp! if song
   end
   
   def self.setPlaying (song)
