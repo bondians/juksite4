@@ -1,0 +1,137 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/bondiproj/!svn/ver/1569/cocoaJukebox/branches/juksite/db/migrate
+END
+20091119161020_create_finders.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/bondiproj/!svn/ver/1269/cocoaJukebox/branches/juksite/db/migrate/20091119161020_create_finders.rb
+END
+20090302054450_create_songs.rb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/bondiproj/!svn/ver/1269/cocoaJukebox/branches/juksite/db/migrate/20090302054450_create_songs.rb
+END
+20090302053506_create_artists.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/bondiproj/!svn/ver/1269/cocoaJukebox/branches/juksite/db/migrate/20090302053506_create_artists.rb
+END
+20100930213400_create_reqlists.rb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/bondiproj/!svn/ver/1272/cocoaJukebox/branches/juksite/db/migrate/20100930213400_create_reqlists.rb
+END
+20090302053938_create_albums.rb
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/bondiproj/!svn/ver/1269/cocoaJukebox/branches/juksite/db/migrate/20090302053938_create_albums.rb
+END
+20101001191008_create_selections.rb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/bondiproj/!svn/ver/1276/cocoaJukebox/branches/juksite/db/migrate/20101001191008_create_selections.rb
+END
+20101001155416_add_active_to_playlists.rb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/bondiproj/!svn/ver/1275/cocoaJukebox/branches/juksite/db/migrate/20101001155416_add_active_to_playlists.rb
+END
+20101017200938_create_settings.rb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/bondiproj/!svn/ver/1431/cocoaJukebox/branches/juksite/db/migrate/20101017200938_create_settings.rb
+END
+20100930213354_create_randlists.rb
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/bondiproj/!svn/ver/1272/cocoaJukebox/branches/juksite/db/migrate/20100930213354_create_randlists.rb
+END
+20100930170237_create_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/bondiproj/!svn/ver/1269/cocoaJukebox/branches/juksite/db/migrate/20100930170237_create_users.rb
+END
+20090303234627_create_songtypes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/bondiproj/!svn/ver/1269/cocoaJukebox/branches/juksite/db/migrate/20090303234627_create_songtypes.rb
+END
+20101028204226_add_theme_to_settings.rb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/bondiproj/!svn/ver/1526/cocoaJukebox/branches/juksite/db/migrate/20101028204226_add_theme_to_settings.rb
+END
+20100709173350_remove_artist_from_album.rb
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/bondiproj/!svn/ver/1269/cocoaJukebox/branches/juksite/db/migrate/20100709173350_remove_artist_from_album.rb
+END
+20101101203237_add_active_to_apids.rb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/bondiproj/!svn/ver/1569/cocoaJukebox/branches/juksite/db/migrate/20101101203237_add_active_to_apids.rb
+END
+20090312214653_create_plentries.rb
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/bondiproj/!svn/ver/1269/cocoaJukebox/branches/juksite/db/migrate/20090312214653_create_plentries.rb
+END
+20090319025928_add_sort_to_plentry.rb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/bondiproj/!svn/ver/1269/cocoaJukebox/branches/juksite/db/migrate/20090319025928_add_sort_to_plentry.rb
+END
+20091120070711_add_file_to_plentry.rb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/bondiproj/!svn/ver/1269/cocoaJukebox/branches/juksite/db/migrate/20091120070711_add_file_to_plentry.rb
+END
+20090302053421_create_genres.rb
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/bondiproj/!svn/ver/1269/cocoaJukebox/branches/juksite/db/migrate/20090302053421_create_genres.rb
+END
+20101029193102_add_allow_playlist_to_setting.rb
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/bondiproj/!svn/ver/1547/cocoaJukebox/branches/juksite/db/migrate/20101029193102_add_allow_playlist_to_setting.rb
+END
+20090312214341_create_playlists.rb
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/bondiproj/!svn/ver/1269/cocoaJukebox/branches/juksite/db/migrate/20090312214341_create_playlists.rb
+END
+20101002043049_create_currentsongs.rb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/bondiproj/!svn/ver/1279/cocoaJukebox/branches/juksite/db/migrate/20101002043049_create_currentsongs.rb
+END
+20090309211902_create_abuses.rb
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/bondiproj/!svn/ver/1269/cocoaJukebox/branches/juksite/db/migrate/20090309211902_create_abuses.rb
+END
