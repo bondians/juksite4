@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 root to: 'selections#index'
-
+get 'events', to: "selections#events"
 resources :plentries
 resources :playlists
 resources :sonviews

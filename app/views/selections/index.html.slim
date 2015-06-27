@@ -17,3 +17,11 @@
 = draw_songs(@randsongs, :checkbox, :remove_current, :no_track, :no_dnd, :no_genre, :request_button)
 
 javascript:
+  jQuery(document).ready(function() {
+    setTimeout(function() {
+      var source = new EventSource('/events');
+      source.addEventListener('refresh', function(e) {
+        window.location.reload();
+      });
+    }, 1);
+  });

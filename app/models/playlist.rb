@@ -31,7 +31,7 @@ class Playlist < ActiveRecord::Base
     
     test_entry = Plentry.find new_index.first
     
-    new_index.each_with_index{|entry,i| Plentry.update_all(["idx = ?", i], ["id = ?", entry])}
+    new_index.each_with_index{|entry,i| Plentry.update_all(["idx = ?", i], ["id = ?", entry], updated_at: DateTime.now)}
     
     return test_entry.playlist
   end

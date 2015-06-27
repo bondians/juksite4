@@ -4,7 +4,7 @@
 # Mime::Type.register "text/richtext", :rtf
     Mime::Type.register "audio/x-mpegurl", :m3u
     Mime::Type.register "image/jpeg", :jpg
-    Mime::Type.register "image/png", :png
+#    Mime::Type.register "image/png", :png
     Mime::Type.register "application/x-tar", :tar
     Mime::Type.register "text/plain", :txt
         #Mime::Type.register "application/json", :json

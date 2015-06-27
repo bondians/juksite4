@@ -1,4 +1,7 @@
 class SelectionsController < ApplicationController
+  include ActionController::Live
+  require 'reloader/sse'
+
   def index
     randlist = Randlist.order(:sort)
     @randsongs = randlist.map{|a| a.song}
@@ -18,5 +21,27 @@ class SelectionsController < ApplicationController
     Reqlist.set_index(new_index)
     redirect_to(selections_url)
   end
+  
+  def events
+    # SSE expects the `text/event-stream` content type
+    response.headers['Content-Type'] = 'text/event-stream'
+    
+    sse = Reloader::SSE.new(response.stream)
+    start = Song.check_queue
+      loop do
+        nextstart = Song.check_queue
+        unless nextstart == start
+          start = nextstart
+          sse.write({ :dirs => "dirs" }, :event => 'refresh')
+        end
+        sleep 10
+      end
+    rescue IOError
+      # When the client disconnects, we'll get an IOError on write
+    ensure
+      sse.close
+  end
+
+  
   
 end
