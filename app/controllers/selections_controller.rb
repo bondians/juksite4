@@ -28,13 +28,13 @@ class SelectionsController < ApplicationController
     
     sse = Reloader::SSE.new(response.stream)
     start = Song.check_queue
-      loop do
+      10.times do
         nextstart = Song.check_queue
         unless nextstart == start
           start = nextstart
           sse.write({ :dirs => "dirs" }, :event => 'refresh')
         end
-        sleep 10
+        sleep 5
       end
     rescue IOError
       # When the client disconnects, we'll get an IOError on write
