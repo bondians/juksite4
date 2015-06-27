@@ -11,7 +11,7 @@
 <br>
 - unless @reqsongs.empty?
   b Request Queue
-  = draw_songs(@reqsongs, :checkbox, :remove_current, :no_track, :no_genre )
+  = draw_songs(@reqsongs, :checkbox, :remove_current, :no_track, :no_genre, :set_order )
 <br>
   b Random Queue
 = draw_songs(@randsongs, :checkbox, :remove_current, :no_track, :no_dnd, :no_genre, :request_button)

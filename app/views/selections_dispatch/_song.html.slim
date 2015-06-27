@@ -1,6 +1,6 @@
 -unless ((song.songtype_id != 2) || !song.apid || (!!song.apid && !!song.apid.active))
   tr id="<%=song.id%>"
-    -if toggledraws.include?(:checkbox)
+    -if false # toggledraws.include?(:checkbox)
       td &nbsp;
     -if toggledraws.include?(:request_button)
       td &nbsp;
@@ -15,7 +15,7 @@
       td =h song.genre.name
 -else
   tr id="<%=song.id%>"
-    -if toggledraws.include?(:checkbox)
+    -if false # toggledraws.include?(:checkbox)
       td =check_box_tag("songs[]", song.id, false, :class=>'song')
     -if toggledraws.include?(:request_button)
       td = link_to "Request", :controller => "songs", :id => song, :action => :pick

@@ -14,6 +14,7 @@ class SelectionsController < ApplicationController
   
   def set_order
     new_index = params[:index]
+    redirect_to(selections_url) unless new_index
     Reqlist.set_index(new_index)
     redirect_to(selections_url)
   end

@@ -2,7 +2,7 @@
 =form_tag :controller => :selections, :action => :set_order do
   table class="table table-striped" id="table-1"
     tr class="nodrop nodrag"
-      -if toggledraws.include?(:checkbox)
+      -if false # toggledraws.include?(:checkbox)
         th &nbsp;
       -if toggledraws.include?(:request_button)
         th &nbsp;
@@ -18,7 +18,8 @@
         th Genre
     - for song in songs
       = render :partial => 'selections_dispatch/song', :locals => { :song => song, :toggledraws => toggledraws }
-  <button type="submit" class="btn btn-default" do >Set Order</button>
+  -if (toggledraws.include?(:set_order) && songs.length > 1)
+    <button type="submit" class="btn btn-default" do >Set Order</button>
 
 javascript:
   $(document).ready(function() {
