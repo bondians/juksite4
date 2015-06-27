@@ -1,4 +1,8 @@
 h4 Songs
+/ Try to split out the form to a template
+/ _searchWithSiteGraphic.html.slim
+/ but will need to know how to pass some variable to indicate which
+/ controller gets called
 = form_tag songs_path, :method => "get", :class=> "form-inline" do
   div class="form-group"
     = text_field_tag :search, params[:search], :class=>"form-control", :placeholder=>"Song Title"
