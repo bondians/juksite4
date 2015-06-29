@@ -3,59 +3,19 @@
 # foo = Tagger.new("filename")
 # foo.artist  => "Some Artist Guy"
 
-require 'id3lib'
-require 'mp4info'
-require 'iconv'
-require 'lib/dbconst'
 
-class MP4Fixer
-  ## This class translates id3lib-ruby calls to the similar call in MP4Info
-  def initialize(filename)
-    @tag = MP4Info.open(filename)
-  end
-  
-  def title
-    @tag.NAM
-  end
-  
-  def album
-    @tag.ALB
-  end
-  
-  def artist
-    @tag.ART
-  end
-  
-  def genre
-    @tag.GNRE
-  end
-  
-  def year
-    @tag.DAY.to_i
-  end
-  
-  def track
-    @tag.TRKN
-  end
-  
-  def cover
-    @tag.COVR
-  end
-  
-  def apid
-    @tag.APID
-  end
-  
-  def covertype
-    return "image/jpeg" if @tag.COVR
-    nil
-  end
+require 'dbconst'
+require 'taglib'
 
-  def legacy_num
-   return nil
-  end
-  
-end
+# @title
+# @album
+# @artist
+# @genre
+# @year
+# @track
+# @cover
+# @apid
+
 
 class Tagger
 
@@ -74,7 +34,7 @@ class Tagger
     @filetype = Tagger::TAG_FOR_NAME[namechunks.last.downcase]
     namechunks = @filename.split("/")
     @baseFilename = namechunks.last
-    fail "Unregistered Filetype" unless @filetype
+    #fail "Unregistered Filetype" unless @filetype
     
     read_frames
   end
@@ -102,7 +62,7 @@ class Tagger
   end
   
   def saveChanges
-    @tag.update!
+    #@tag.update!
   end
   
   def apid
@@ -111,44 +71,38 @@ class Tagger
   end
   
   def title
-    return convert(@tag.title) if @tag.title
+    return @title if @title
     return @baseFilename unless @baseFilename.include?("rack")
     return DBConstant::NO_TITLE
   end
 
   def legacy_num
-    return nil unless @filetype == "mp3"
-    tagText = @tag.find{|t| t[:id]==:TXXX}
-    return tagText[:text].to_i if tagText 
+    #return nil unless @filetype == "mp3"
+    #tagText = @tag.find{|t| t[:id]==:TXXX}
+    #return tagText[:text].to_i if tagText 
     return nil
   end
   
   def artist
-    return convert(@tag.artist) if @tag.artist
+    return @artist if @artist
     return DBConstant::NO_ARTIST
   end
   
   def album
-    return convert(@tag.album) if @tag.album
+    return @album if @album
     return DBConstant::NO_ALBUM
   end
   
   def genre
-    mygenre = @tag.genre
-    return DBConstant::NO_GENRE unless !!mygenre
-    mygenre
+    @genre
   end
   
   def year
-    return @tag.year.to_i if @tag.year
-    return nil
+    @year
   end
   
   def track
-    trk = @tag.track
-    return trk.first.to_i if trk.is_a?(Array)
-    return trk.split("/").first.to_i if trk.is_a?(String)
-    return nil
+    @track
   end
   
   def filetype
@@ -161,16 +115,13 @@ class Tagger
   
   #{:textenc=>0, :data=>"###############scads of data###########", :description=>"", :imageformat=>"", :mimetype=>"image/jpeg", :id=>:APIC, :picturetype=>3}
   def cover
-    return @tag.cover if @tag.respond_to?('cover')
-    cov = @tag.find {|f| f[:id] == :APIC }
-    return cov[:data] if cov
     nil
   end
   
   def covertype
-    return @tag.covertype if @tag.respond_to?('covertype')
-    cov = @tag.find {|f| f[:id] == :APIC }
-    return "image/jpeg" if cov
+    #return @tag.covertype if @tag.respond_to?('covertype')
+    #cov = @tag.find {|f| f[:id] == :APIC }
+    #return "image/jpeg" if cov
     nil
   end
   
@@ -194,15 +145,23 @@ class Tagger
   end
   
   def read_frames
-    self.send("read_frames_#{@filetype}")
-  end
-  
-  def read_frames_id3
-    @tag = ID3Lib::Tag.new(@filename)
-  end
-  
-  def read_frames_aac
-    @tag = MP4Fixer.new(@filename)
-  end
-  
+    #self.send("read_frames_#{@filetype}")  ##old stuff
+    # Load a file
+    TagLib::FileRef.open(@filename) do |fileref|
+    unless fileref.null?
+      tag = fileref.tag
+      @title   =  tag.title   #=> "Wake Up"
+      @artist  =  tag.artist  #=> "Arcade Fire"
+      @album   =  tag.album   #=> "Funeral"
+      @year    =  tag.year    #=> 2004
+      @track   =  tag.track   #=> 7
+      @genre   =  tag.genre   #=> "Indie Rock"
+      @comment =  tag.comment #=> nil
+
+      properties = fileref.audio_properties
+      properties.length  #=> 335 (song length in seconds)
+    end
+  end  # File is automatically closed at block end
 end
+end
+  

@@ -1,7 +1,7 @@
 class Finder < ActiveRecord::Base
   
   def self.lastrun
-    (Finder.find_all_by_success true, :order => :started).last
+    Finder.where(success: true).order(:started).last
   end
   
   def self.fresh
