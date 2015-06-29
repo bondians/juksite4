@@ -66,8 +66,9 @@ class Tagger
   end
   
   def apid
-    return nil unless @filetype == "aac"
-    return @tag.apid
+    nil
+    #return nil unless @filetype == "aac"
+    #return @tag.apid
   end
   
   def title
@@ -138,9 +139,9 @@ class Tagger
   private
 
   def convert(string)
-    out = Iconv.conv('UTF-8', 'LATIN1', string)
+    out = string.encode("UTF-8", :invalid => :replace, :undef => :replace, :replace => "?")
     return out if string.length == 1
-    out = Iconv.conv('UTF-8', 'UTF-16', string) unless !!out.match(/[[:print:]]{2,}/)
+    out = string.encode("UTF-8", :invalid => :replace, :undef => :replace, :replace => "?") unless !!out.match(/[[:print:]]{2,}/)
     return out
   end
   

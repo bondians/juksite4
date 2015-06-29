@@ -81,7 +81,8 @@ Find.find(options.path) do |path|
                 puts path
                 ##Build a song object, while working with the rest
                 attributes = DEFAULTS
-                attributes[:file] = Iconv.conv('UTF-8', 'LATIN1', path)
+                attributes[:file] = path.encode("UTF-8", :invalid => :replace, :undef => :replace, :replace => "?")
+                ## old way ## Iconv.conv('UTF-8', 'LATIN1', path)
                 ## Shortcircuit if its already present
                 wassong = @songs.find{|s| s.file == attributes[:file]}
                 unless !!wassong
