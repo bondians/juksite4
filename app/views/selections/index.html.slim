@@ -10,8 +10,12 @@
   </button>
 <br>
 - unless @reqsongs.empty?
-  b Request Queue
-  = draw_songs(@reqsongs, :checkbox, :remove_current, :no_track, :no_genre, :set_order )
+  div class="row"
+    div class="col-xs-11"
+      b Request Queue
+      = draw_songs(@reqsongs, :checkbox, :remove_current, :no_track, :no_genre, :set_order )
+    div class="col-xs-1"
+      p 
 <br>
   b Random Queue
 = draw_songs(@randsongs, :checkbox, :remove_current, :no_track, :no_dnd, :no_genre, :request_button)
