@@ -19,11 +19,12 @@
       = render :partial => 'selections_dispatch/song', :locals => { :song => song, :toggledraws => toggledraws }
   -if (toggledraws.include?(:set_order) && songs.length > 1)
     <button type="submit" class="btn btn-default" do >Set Order</button>
-
-javascript:
-  $(document).ready(function() {
-      // Initialise the table
-      $("#table-1").tableDnD({
-        onDragClass: "cssNoDay1"
-      });
-  });
+    
+- unless toggledraws.include?(:no_dnd)
+  javascript:
+    $(document).ready(function() {
+        // Initialise the table
+        $("#table-1").tableDnD({
+          onDragClass: "cssNoDay1"
+        });
+    });
