@@ -1,15 +1,18 @@
 h4 Songs
-/ Try to split out the form to a template
-/ _searchWithSiteGraphic.html.slim
-/ but will need to know how to pass some variable to indicate which
-/ controller gets called
-= form_tag songs_path, :method => "get", :class=> "form-inline" do
-  div class="form-group"
-    = text_field_tag :search, params[:search], :class=>"form-control", :placeholder=>"Song Title"
-  <button type="submit" class="btn btn-default" do >
-  <i class="glyphicon glyphicon-search"></i> 
-  </button>
-<br>
+div class="container"
+  div class="row"
+    div class="col-xs-5"
+      = form_tag songs_path, :method => "get", :class=> "form-inline" do
+        div class="pull-right"
+          div class="form-group"
+            = text_field_tag :search, params[:search], :class=>"form-control input-xlarge", :placeholder=>"Song Title"
+    div class="col-xs-5"
+        <button type="submit" class="btn btn-default" do >
+        <i class="glyphicon glyphicon-search"></i> 
+        </button>
+    div class="col-xs-2"
+      div class="pull-right"
+        = image_tag "hibiscus_blue.png", size: "50x50" 
 <br>
 -if Setting.allow_playlists?
   = draw_songs(@songs, :playlist_sel, :playlist_add, :checkbox, :no_track, :no_dnd, :request_button)

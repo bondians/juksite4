@@ -4,25 +4,25 @@
 
 
 // These default colors will be used by a bunch of stuff, so edit these
-$BackgroundMain:#B4E4FC;
+$BackgroundMain:#EDF1FC;
 $BackgroundImage:'hibiscus_blue.png';
 
 
-$NavBarStartGradient:#B1ADFF;
-$NavBarEndGradient:#B6E3FF;
+$NavBarStartGradient:#CDAEF8;
+$NavBarEndGradient:#F8AEDE;
 
 $NavBarText:#A400B1; // This is the only NavBar text color that gets used right now
 $NavBarTextAlt:#262626; // Not used
 $NavBarTextLink:#AAF;   // Not used
 
 $TableMain:#A5B8FB;
-$TableAlternate:#F8AEDE;
-$TableTextMain:#0000FE;
-$TableTextAlt:#AD0073;
+$TableAlternate:#EAD7FC;
+$TableTextMain:#3952A8;
+$TableTextAlt:#8A47C9;
 
 // Alert boxes colors
-$AlertSuccessBox:#70C6F9;
-$AlertSuccessText:#05346C;
+$AlertSuccessBox:#DC96FF;
+$AlertSuccessText:#47185E;
 
 div.imageSub { 
   position: relative; 
@@ -163,7 +163,7 @@ img {
 }
 
 .navbar-fixed-bottom, .navbar-fixed-top, .navbar-static-top {
-    border-radius: 0;
+    border-radius: 256;
 }
 
 
@@ -250,11 +250,11 @@ table {
 // to make views framework-neutral
 main {
   @extend .container;
-  background-color: #BFEAFB;
-  background: url($BackgroundImage) no-repeat;
-  background-size: 60px 60px;
-  background-position: right 20px top 10px;
-  padding-bottom: 80px;
+  background-color: $BackgroundMain;
+//  background: url($BackgroundImage) no-repeat;
+//  background-size: 60px 60px;
+//  background-position: right 20px top 10px;
+//  padding-bottom: 80px;
   width: 100%;
   margin-top: 51px; // accommodate the navbar
   }
@@ -268,3 +268,4 @@ section {
   color: $AlertSuccessText !important;
   
   }
+  
