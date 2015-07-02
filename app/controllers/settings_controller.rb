@@ -5,8 +5,7 @@ class SettingsController < ApplicationController
     @playlists.sort! {|x,y| x.user.name <=> y.user.name}
     @setting = Setting.current
     #@themes = Setting.themes
-    vol = `defaults read com.deepbondi.cocoaJukebox kMasterVolume`
-    vol = 1.0 if (vol.nil? or vol.empty?)
+    vol = getvolume
     @currentVolume = vol.to_f
   end
   
@@ -33,30 +32,33 @@ class SettingsController < ApplicationController
     redirect_to(selections_url)
   end
   
+  def getvolume
+    vol = `script/get_volume.sh`
+    vol = 1.0 if vol.nil? or vol.empty?
+    return vol
+  end
+
   def setvolume
-    vol = `defaults read com.deepbondi.cocoaJukebox kMasterVolume`
-    vol = 1.0 if (vol.empty?)
+    vol = getvolume
     currentVolume = vol.to_f
     newVolume = params[:newVolume].to_f
     newVolume = 1.0 if newVolume > 1.0
     unless (currentVolume == newVolume)
-      app = (Rails.root.to_s + "/script/jookieControl -volume")
-      system "#{app} #{newVolume}"
+      system "script/set_volume.sh #{newVolume}"
     end
     render :nothing => true, :status => 200, :content_type => 'text/html'
   end
   
   def action
-    app = (Rails.root.to_s + "/script/jookieControl -action")
     what = params[:do]
     if what
       case what
       when "playerSkip"
-        system "#{app} skipsong"
+        system "script/skipsong.sh"
       when "playerStartStop"
-        system "#{app} startstop"
+        system "script/startstop.sh"
       when "playerPause"
-        system "#{app} pause"
+        system "script/pause.sh"
       else
         
       end

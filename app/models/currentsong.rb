@@ -2,7 +2,7 @@ class Currentsong < ActiveRecord::Base
   belongs_to :song
   
   def self.playing
-    song = `defaults read com.deepbondi.cocoaJukebox kCurrentSong`
+    song = `script/currentsong.sh`
     song.chomp! if song
   end
   
