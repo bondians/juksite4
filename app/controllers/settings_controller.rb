@@ -6,7 +6,7 @@ class SettingsController < ApplicationController
     @setting = Setting.current
     #@themes = Setting.themes
     vol = `defaults read com.deepbondi.cocoaJukebox kMasterVolume`
-    vol = 1.0 if (vol.empty?)
+    vol = 1.0 if (vol.nil? or vol.empty?)
     @currentVolume = vol.to_f
   end
   
