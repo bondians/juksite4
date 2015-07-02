@@ -107,7 +107,7 @@ class SongsController < ApplicationController
     req.save
     req.sort = req.id
     req.save
-    flash[:notice_added] = "#{song.title}"
+    flash[:notice] = "<b>#{song.title}</b> Added to playlist."
     redirect_to(selections_url)
   end
   
